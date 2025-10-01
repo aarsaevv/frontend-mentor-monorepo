@@ -1,0 +1,6 @@
+.angular
+.vscode
+node_modules
+*.json
+pnpm-lock.yaml
+pnpm-workspace.yaml

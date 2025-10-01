@@ -1,0 +1,23 @@
+{
+  "name": "frontend-mentor-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "prettier --check .",
+    "fix": "prettier --write .",
+    "dev:browser-extension-manager-ui": "pnpm --filter browser-extension-manager-ui start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^3.6.2"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "all"
+  }
+}
