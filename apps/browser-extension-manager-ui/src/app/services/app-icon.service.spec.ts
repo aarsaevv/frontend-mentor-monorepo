@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AppTheme } from '@/app/app-theme';
+import { AppIconService } from './app-icon.service';
 
-describe('AppTheme', () => {
-  let service: AppTheme;
+describe('AppIconService', () => {
+  let service: AppIconService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AppTheme);
+    service = TestBed.inject(AppIconService);
   });
 
   it('should be created', () => {

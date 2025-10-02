@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ExtensionCard } from '../extension-card/extension-card.component';
+import { ExtensionCard } from '@/app/components/extension-card/extension-card.component';
 
 @Component({
   selector: 'app-home-page',

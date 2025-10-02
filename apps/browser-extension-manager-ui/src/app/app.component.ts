@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from '@/app/header/header.component';
-import { AppTheme } from '@/app/app-theme.service';
+import { Header } from '@/app/components/header/header.component';
+import { AppThemeService } from '@/app/services/app-theme.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ import { AppTheme } from '@/app/app-theme.service';
   `,
 })
 export class App {
-  appThemeService = new AppTheme();
+  appThemeService = inject(AppThemeService);
 
   ngOnInit() {
     this.appThemeService.initTheme();

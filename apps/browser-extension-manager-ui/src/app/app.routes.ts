@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home } from '@/app/home/home.component';
+import { Home } from '@/app/components/home-page/home-page.component';
 
 export const routes: Routes = [
   {

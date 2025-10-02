@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExtensionCard } from './extension-card.component';
+import { Icon } from './icon.component';
 
-describe('ExtensionCard', () => {
-  let component: ExtensionCard;
-  let fixture: ComponentFixture<ExtensionCard>;
+describe('Icon', () => {
+  let component: Icon;
+  let fixture: ComponentFixture<Icon>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExtensionCard],
+      imports: [Icon],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ExtensionCard);
+    fixture = TestBed.createComponent(Icon);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

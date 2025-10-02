@@ -18,7 +18,7 @@ interface LocalStorageValueMap {
 @Injectable({
   providedIn: 'root',
 })
-export class AppTheme {
+export class AppThemeService {
   htmlElement = document.documentElement;
 
   localStorage = LocalStorage<LocalStorageKey, LocalStorageValueMap>();
