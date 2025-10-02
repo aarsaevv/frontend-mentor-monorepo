@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
+import { ExtensionCard } from '../extension-card/extension-card.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
-  template: ` <p>home-page works!</p> `,
-  styleUrl: './home.component.scss',
+  imports: [ExtensionCard],
+  template: `
+    <p>home-page works!</p>
+    <app-extension-card />
+    <app-extension-card />
+    <app-extension-card />
+  `,
+  styles: ``,
 })
 export class Home {}

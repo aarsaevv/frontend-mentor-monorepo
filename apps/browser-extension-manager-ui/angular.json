@@ -7,8 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "type": "component"
+          "style": "scss"
         },
         "@schematics/angular:service": {
           "type": "service"
@@ -31,7 +30,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": [
+              "src/styles.scss",
+              "src/assets/fonts/font-face.scss"
+            ]
           },
           "configurations": {
             "production": {
@@ -84,7 +86,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": [
+              "src/styles.scss",
+              "src/assets/fonts/font-face.scss"
+            ]
           }
         }
       }

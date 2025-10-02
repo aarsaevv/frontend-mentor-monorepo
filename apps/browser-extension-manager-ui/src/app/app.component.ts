@@ -7,10 +7,16 @@ import { AppTheme } from '@/app/app-theme.service';
   selector: 'app-root',
   imports: [Header, RouterOutlet],
   template: `
-    <app-header />
-    <router-outlet />
+    <div class="app-container">
+      <app-header />
+      <router-outlet />
+    </div>
   `,
-  styleUrl: './app.component.scss',
+  styles: `
+    .app-container {
+      padding: 0 var(--spacing-72);
+    }
+  `,
 })
 export class App {
   appThemeService = new AppTheme();
