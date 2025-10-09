@@ -13,11 +13,5 @@
   "license": "ISC",
   "dependencies": {
     "prettier": "^3.6.2"
-  },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true,
-    "printWidth": 100,
-    "trailingComma": "all"
   }
 }

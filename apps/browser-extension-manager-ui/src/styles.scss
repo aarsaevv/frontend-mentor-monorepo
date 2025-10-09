@@ -3,17 +3,17 @@
   --app-breakpoint-mobile: 375px;
   --app-breakpoint-desktop: 1440px;
   /* Colors */
-  --app-color-neutral-0: hsl(200, 60%, 99%);
-  --app-color-neutral-100: hsl(0, 0%, 93%);
-  --app-color-neutral-200: hsl(217, 61%, 90%);
-  --app-color-neutral-300: hsl(0, 0%, 78%);
-  --app-color-neutral-600: hsl(226, 11%, 37%);
-  --app-color-neutral-700: hsl(225, 23%, 24%);
-  --app-color-neutral-800: hsl(226, 25%, 17%);
-  --app-color-neutral-900: hsl(227, 75%, 14%);
-  --app-color-red-400: hsl(3, 86%, 64%);
-  --app-color-red-500: hsl(3, 71%, 56%);
-  --app-color-red-700: hsl(3, 77%, 44%);
+  --app-color-neutral-0: #fbfdfe;
+  --app-color-neutral-100: #ededed;
+  --app-color-neutral-200: #d6e2f5;
+  --app-color-neutral-300: #c7c7c7;
+  --app-color-neutral-600: #545969;
+  --app-color-neutral-700: #2f364b;
+  --app-color-neutral-800: #212636;
+  --app-color-neutral-900: #09153e;
+  --app-color-red-400: #f25c54;
+  --app-color-red-500: #de473f;
+  --app-color-red-700: #c7221a;
   /* Gradient */
   --app-gradient-light: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
   --app-gradient-dark: linear-gradient(180deg, #040918 0%, #091540 100%);
@@ -26,25 +26,50 @@
   --app-font-weight-500: 500;
   --app-font-weight-700: 700;
   /* Spacing */
+  --spacing-4: 4px;
   --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-14: 14px;
   --spacing-16: 16px;
   --spacing-24: 24px;
   --spacing-36: 36px;
+  --spacing-48: 48px;
   --spacing-72: 72px;
   /* Border */
   --border-radius-8: 8px;
   --border-radius-12: 12px;
   --border-radius-16: 16px;
+  --border-radius-24: 24px;
 }
 
 html.theme-light {
   --app-gradient: var(--app-gradient-light);
-  --card-bg-color: var(--app-color-neutral-0);
+  --app-text-color-primary: var(--app-color-neutral-900);
+  --app-text-color-secondary: var(--app-color-neutral-600);
+
+  --header-bg-color: var(--app-color-neutral-0);
+  --extension-card-bg-color: var(--app-color-neutral-0);
+
+  --theme-button-bg-color: var(--app-color-neutral-100);
+  --theme-button-bg-hover: var(--app-color-neutral-300);
+
+  --filter-button-bg-color: var(--app-color-neutral-0);
+  --filter-button-bg-hover: var(--app-color-neutral-100);
 }
 
 html.theme-dark {
   --app-gradient: var(--app-gradient-dark);
-  --card-bg-color: var(--app-color-neutral-800);
+  --app-text-color-primary: var(--app-color-neutral-0);
+  --app-text-color-secondary: var(--app-color-neutral-300);
+
+  --header-bg-color: var(--app-color-neutral-800);
+  --extension-card-bg-color: var(--app-color-neutral-800);
+
+  --theme-button-bg-color: var(--app-color-neutral-700);
+  --theme-button-bg-hover: var(--app-color-neutral-600);
+
+  --filter-button-bg-color: var(--app-color-neutral-700);
+  --filter-button-bg-hover: var(--app-color-neutral-600);
 }
 
 html.theme-transition::view-transition-old(root) {
@@ -61,20 +86,21 @@ html {
 
 body {
   background: var(--app-gradient);
+  background-attachment: fixed;
   margin: 0 auto;
-
+  color: var(--app-text-color-primary);
   font-family: NotoSans, sans-serif;
   font-size: var(--app-font-size-16);
   font-weight: var(--app-font-weight-400);
 }
 
-p {
+h1, p {
   margin: 0;
 }
 
 @keyframes circle-in {
   from {
-    clip-path: circle(0% at 50% 0%);
+    clip-path: circle(0% at 95% 10%);
     opacity: 0;
   }
 
