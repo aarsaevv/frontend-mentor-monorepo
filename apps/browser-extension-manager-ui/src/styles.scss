@@ -40,6 +40,11 @@
   --border-radius-12: 12px;
   --border-radius-16: 16px;
   --border-radius-24: 24px;
+  /* Outline */
+  --app-outline-light: 1px solid var(--app-color-neutral-200);
+  --app-outline-dark: 1px solid var(--app-color-neutral-700);
+  /* Shadow */
+  --app-shadow-light: 0px 2px 3px var(--app-color-neutral-300);
 }
 
 html.theme-light {
@@ -48,13 +53,20 @@ html.theme-light {
   --app-text-color-secondary: var(--app-color-neutral-600);
 
   --header-bg-color: var(--app-color-neutral-0);
-  --extension-card-bg-color: var(--app-color-neutral-0);
+  --header-outline: var(--app-outline-light);
+  --header-box-shadow: var(--app-shadow-light);
+
+  --card-bg-color: var(--app-color-neutral-0);
+  --card-outline: var(--app-outline-light);
+  --card-box-shadow: var(--app-shadow-light);
 
   --theme-button-bg-color: var(--app-color-neutral-100);
   --theme-button-bg-hover: var(--app-color-neutral-300);
 
   --filter-button-bg-color: var(--app-color-neutral-0);
   --filter-button-bg-hover: var(--app-color-neutral-100);
+  --filter-button-outline: 1px solid var(--app-color-neutral-200);
+  --filter-button-box-shadow: var(--app-shadow-light);
 }
 
 html.theme-dark {
@@ -63,13 +75,20 @@ html.theme-dark {
   --app-text-color-secondary: var(--app-color-neutral-300);
 
   --header-bg-color: var(--app-color-neutral-800);
-  --extension-card-bg-color: var(--app-color-neutral-800);
+  --header-outline: none;
+  --header-box-shadow: none;
+
+  --card-bg-color: var(--app-color-neutral-800);
+  --card-outline: var(--app-outline-dark);
+  --card-box-shadow: none;
 
   --theme-button-bg-color: var(--app-color-neutral-700);
   --theme-button-bg-hover: var(--app-color-neutral-600);
 
   --filter-button-bg-color: var(--app-color-neutral-700);
   --filter-button-bg-hover: var(--app-color-neutral-600);
+  --filter-button-outline: 1px solid var(--app-color-neutral-600);
+  --filter-button-box-shadow: none;
 }
 
 html.theme-transition::view-transition-old(root) {

@@ -15,6 +15,10 @@ import { AppThemeService } from '@/app/services/app-theme.service';
   styles: `
     .app-container {
       padding: 0 var(--spacing-72);
+
+      @media (max-width: 480px) {
+        padding: 0 var(--spacing-24);
+      }
     }
   `,
 })

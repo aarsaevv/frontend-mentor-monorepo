@@ -6,7 +6,6 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
 @Component({
   selector: 'app-home-page',
   imports: [ExtensionCard, SlotButton],
-  // TODO: Добавить тень и аутлайн у карточек фильтров
   template: `
     <div class="heading">
       <h1 class="heading__title">Extensions List</h1>
@@ -47,6 +46,8 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
       border-radius: var(--border-radius-24);
       cursor: pointer;
       transition: background-color 250ms;
+      box-shadow: var(--filter-button-box-shadow);
+      outline: var(--filter-button-outline);
 
       &:hover {
         background-color: var(--filter-button-bg-hover);

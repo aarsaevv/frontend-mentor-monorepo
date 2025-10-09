@@ -8,7 +8,6 @@ import { IconSun } from '@/app/components/ui/icon/icon-sun.component';
 @Component({
   selector: 'app-header',
   imports: [IconLogo, SlotButton, IconMoon, IconSun],
-  // TODO: Добавить тень в светлой теме
   template: `
     <div class="app-header">
       <app-icon-logo />
@@ -34,6 +33,8 @@ import { IconSun } from '@/app/components/ui/icon/icon-sun.component';
       padding: var(--spacing-10) var(--spacing-14);
       border-radius: var(--border-radius-16);
       background-color: var(--header-bg-color);
+      box-shadow: var(--header-box-shadow);
+      outline: var(--header-outline);
 
       &__button {
         padding: var(--spacing-8);
