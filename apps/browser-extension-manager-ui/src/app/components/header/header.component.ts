@@ -1,20 +1,27 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { AppThemeMode, AppThemeService } from '@/app/services/app-theme.service';
-import { IconLogo } from '@/app/components/icon/icon-logo/icon-logo.component';
+import { IconLogo } from '@/app/components/ui/icon/icon-logo.component';
+import { SlotButton } from '@/app/components/ui/button/slot-button.component';
+import { IconMoon } from '@/app/components/ui/icon/icon-moon.component';
+import { IconSun } from '@/app/components/ui/icon/icon-sun.component';
 
 @Component({
   selector: 'app-header',
-  imports: [IconLogo],
+  imports: [IconLogo, SlotButton, IconMoon, IconSun],
+  // TODO: Добавить тень в светлой теме
   template: `
     <div class="app-header">
-      <app-icon-logo [size]="{ width: 180, height: 40 }" />
+      <app-icon-logo />
 
-      <button class="app-header__button" (click)="changeTheme(AppThemeMode.DARK)">
-        Change Theme DARK
-      </button>
-      <button class="app-header__button" (click)="changeTheme(AppThemeMode.LIGHT)">
-        Change Theme LIGHT
-      </button>
+      @if (this.isLightTheme()) {
+        <app-slot-button class="app-header__button" (click)="changeTheme(AppThemeMode.DARK)">
+          <app-icon-moon />
+        </app-slot-button>
+      } @else {
+        <app-slot-button class="app-header__button" (click)="changeTheme(AppThemeMode.LIGHT)">
+          <app-icon-sun />
+        </app-slot-button>
+      }
     </div>
   `,
   styles: `
@@ -22,10 +29,23 @@ import { IconLogo } from '@/app/components/icon/icon-logo/icon-logo.component';
       display: flex;
       gap: var(--spacing-8);
       align-items: center;
+      justify-content: space-between;
       margin-top: var(--spacing-24);
-      padding: var(--spacing-16);
+      padding: var(--spacing-10) var(--spacing-14);
       border-radius: var(--border-radius-16);
-      background: var(--card-bg-color);
+      background-color: var(--header-bg-color);
+
+      &__button {
+        padding: var(--spacing-8);
+        background-color: var(--theme-button-bg-color);
+        border-radius: var(--border-radius-8);
+        cursor: pointer;
+        transition: background-color 250ms;
+
+        &:hover {
+          background-color: var(--theme-button-bg-hover);
+        }
+      }
     }
   `,
 })
@@ -34,11 +54,9 @@ export class Header {
 
   AppThemeMode = AppThemeMode;
 
+  isLightTheme = computed(() => this.appThemeService.savedTheme() === AppThemeMode.LIGHT);
+
   changeTheme(theme: AppThemeMode) {
     this.appThemeService.changeTheme(theme);
-  }
-
-  ngOnInit() {
-    this.appThemeService.initTheme();
   }
 }
