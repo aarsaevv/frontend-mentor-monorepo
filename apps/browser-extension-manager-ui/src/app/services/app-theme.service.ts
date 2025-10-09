@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import LocalStorage from '@sdk/local-storage';
 
 enum LocalStorageKey {
@@ -23,8 +23,10 @@ export class AppThemeService {
 
   localStorage = LocalStorage<LocalStorageKey, LocalStorageValueMap>();
 
-  savedTheme = this.localStorage.getValue(LocalStorageKey.AppTheme, AppThemeMode.LIGHT)
-    ?.value as AppThemeMode;
+  savedTheme = signal(
+    (this.localStorage.getValue(LocalStorageKey.AppTheme, AppThemeMode.LIGHT)
+      ?.value as AppThemeMode) ?? AppThemeMode.DARK,
+  );
 
   applyTheme(theme: AppThemeMode): void {
     this.htmlElement.classList.remove('theme-light', 'theme-dark');
@@ -46,6 +48,8 @@ export class AppThemeService {
 
     const transition = document.startViewTransition(() => {
       this.localStorage.setValue(LocalStorageKey.AppTheme, { value: theme });
+      this.savedTheme.set(theme);
+
       this.applyTheme(theme);
     });
 
@@ -54,7 +58,7 @@ export class AppThemeService {
     });
   }
 
-  initTheme() {
-    this.applyTheme(this.savedTheme);
+  initTheme(): void {
+    this.applyTheme(this.savedTheme());
   }
 }
