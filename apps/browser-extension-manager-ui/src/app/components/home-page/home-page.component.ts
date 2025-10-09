@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { ExtensionCard } from '@/app/components/extension-card/extension-card.component';
 import { AppFilterService, AppFilterType } from '@/app/services/app-filter.service';
 import { SlotButton } from '@/app/components/ui/button/slot-button.component';
+import { Extension, ExtensionService } from '@/app/services/extension.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,15 +12,21 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
       <h1 class="heading__title">Extensions List</h1>
       <div class="heading__filters">
         @for (filter of filterList; track filter.type) {
-          <app-slot-button class="filter-button" (click)="applyFilter(filter.type)">
+          <app-slot-button
+            [class]="[
+              'filter-button',
+              isFilterSelected(filter.type) ? 'filter-button--active' : '',
+            ]"
+            (click)="applyFilter(filter.type)"
+          >
             {{ filter.title }}
           </app-slot-button>
         }
       </div>
     </div>
     <div class="extension-list">
-      @for (n of [].constructor(10); track n) {
-        <app-extension-card />
+      @for (extension of extensions; track extension.name) {
+        <app-extension-card [extension]="extension" />
       }
     </div>
   `,
@@ -50,7 +57,22 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
       outline: var(--filter-button-outline);
 
       &:hover {
-        background-color: var(--filter-button-bg-hover);
+        background-color: var(--app-button-bg-hover);
+      }
+
+      &--active {
+        background-color: var(--filter-button-bg-active);
+        outline: none;
+
+        ::ng-deep {
+          button {
+            color: var(--app-text-color-primary-negative);
+          }
+        }
+
+        &:hover {
+          background-color: var(--filter-button-bg-hover-active);
+        }
       }
     }
 
@@ -64,10 +86,27 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
 })
 export class Home {
   appFilterService: AppFilterService = inject(AppFilterService);
+  extensionService: ExtensionService = inject(ExtensionService);
 
   filterList = this.appFilterService.filterList;
+  selectedFilter = this.appFilterService.selectedFilter;
+
+  extensions: Extension[] = [];
 
   applyFilter(type: AppFilterType) {
-    console.log('appliedFilter:', type);
+    this.selectedFilter.set(type);
+    console.log('appliedFilter:', this.selectedFilter());
+  }
+
+  isFilterSelected(filterType: AppFilterType): boolean {
+    return this.selectedFilter() === filterType;
+  }
+
+  async fetchExtensions() {
+    this.extensions = await this.extensionService.fetchExtensions();
+  }
+
+  ngOnInit() {
+    this.fetchExtensions();
   }
 }

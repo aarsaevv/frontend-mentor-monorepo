@@ -26,6 +26,7 @@ import { Component, Input } from '@angular/core';
       background-color: transparent;
       font: inherit;
       cursor: pointer;
+      color: var(--app-text-color-primary);
 
       &:disabled {
         cursor: default;

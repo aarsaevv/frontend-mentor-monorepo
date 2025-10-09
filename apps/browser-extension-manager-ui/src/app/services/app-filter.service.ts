@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 export type AppFilterType = 'all' | 'active' | 'inactive';
 
@@ -25,4 +25,6 @@ export class AppFilterService {
       type: 'inactive',
     },
   ];
+
+  selectedFilter = signal('all');
 }

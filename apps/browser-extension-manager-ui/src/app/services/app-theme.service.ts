@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import LocalStorage from '@sdk/local-storage';
+import LocalStorage from '@libs/sdk/src/local-storage';
 
 enum LocalStorageKey {
   AppTheme = 'app_theme',

@@ -50,7 +50,9 @@
 html.theme-light {
   --app-gradient: var(--app-gradient-light);
   --app-text-color-primary: var(--app-color-neutral-900);
+  --app-text-color-primary-negative: var(--app-color-neutral-0);
   --app-text-color-secondary: var(--app-color-neutral-600);
+  --app-button-bg-hover: var(--app-color-neutral-100);
 
   --header-bg-color: var(--app-color-neutral-0);
   --header-outline: var(--app-outline-light);
@@ -64,20 +66,26 @@ html.theme-light {
   --theme-button-bg-hover: var(--app-color-neutral-300);
 
   --filter-button-bg-color: var(--app-color-neutral-0);
-  --filter-button-bg-hover: var(--app-color-neutral-100);
+  --filter-button-bg-active: var(--app-color-red-700);
+  --filter-button-bg-hover-active: var(--app-color-red-500);
+
   --filter-button-outline: 1px solid var(--app-color-neutral-200);
   --filter-button-box-shadow: var(--app-shadow-light);
+
+  --remove-button-bg-color: var(--card-bg-color);
+  --remove-button-outline: 1px solid var(--app-color-neutral-300);
 }
 
 html.theme-dark {
   --app-gradient: var(--app-gradient-dark);
   --app-text-color-primary: var(--app-color-neutral-0);
+  --app-text-color-primary-negative: var(--app-color-neutral-900);
   --app-text-color-secondary: var(--app-color-neutral-300);
+  --app-button-bg-hover: var(--app-color-neutral-600);
 
   --header-bg-color: var(--app-color-neutral-800);
   --header-outline: none;
   --header-box-shadow: none;
-
   --card-bg-color: var(--app-color-neutral-800);
   --card-outline: var(--app-outline-dark);
   --card-box-shadow: none;
@@ -86,9 +94,14 @@ html.theme-dark {
   --theme-button-bg-hover: var(--app-color-neutral-600);
 
   --filter-button-bg-color: var(--app-color-neutral-700);
-  --filter-button-bg-hover: var(--app-color-neutral-600);
+  --filter-button-bg-active: var(--app-color-red-500);
+  --filter-button-bg-hover-active: var(--app-color-red-400);
+
   --filter-button-outline: 1px solid var(--app-color-neutral-600);
   --filter-button-box-shadow: none;
+
+  --remove-button-bg-color: var(--card-bg-color);
+  --remove-button-outline: 1px solid var(--app-color-neutral-600);
 }
 
 html.theme-transition::view-transition-old(root) {
