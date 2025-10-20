@@ -1,30 +1,55 @@
 import { Component, Input } from '@angular/core';
 import { Extension } from '@/app/services/extension.service';
 import { SlotButton } from '@/app/components/ui/button/slot-button.component';
+import { ToggleSwitch } from '../ui/checkbox/toggle-switch.component';
 
 @Component({
   selector: 'app-extension-card',
-  imports: [SlotButton],
+  imports: [SlotButton, ToggleSwitch],
   template: `
     <div class="card">
       <div class="card__info">
-        <p class="text-primary">{{ extension.name }}</p>
-        <p class="text-secondary">{{ extension.description }}</p>
+        <img
+          [src]="extension.logo"
+          [alt]="extension.name"
+          [width]="logoWidth"
+          [height]="logoHeight"
+        />
+        <div>
+          <p class="text-primary">{{ extension.name }}</p>
+          <p class="text-secondary">{{ extension.description }}</p>
+        </div>
       </div>
       <div class="card__controls">
-        <app-slot-button class="remove-button" (click)="removeExtension(extension.name)"
-          >Remove</app-slot-button
-        >
+        <app-slot-button class="remove-button" (click)="removeExtension(extension.name)">
+          Remove
+        </app-slot-button>
+        <app-toggle-switch [isChecked]="extension.isActive" />
       </div>
     </div>
   `,
   styles: `
     .card {
+      display: flex;
+      flex-direction: column;
       padding: var(--spacing-16);
       background: var(--card-bg-color);
       border-radius: var(--border-radius-12);
       box-shadow: var(--card-box-shadow);
       outline: var(--card-outline);
+      min-height: 150px;
+      justify-content: space-between;
+
+      &__info {
+        display: flex;
+        gap: var(--spacing-14);
+      }
+
+      &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
     .text-primary {
@@ -44,7 +69,7 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
       border-radius: var(--border-radius-24);
       cursor: pointer;
       transition: background-color 250ms;
-      outline: var(--remove-button-outline);
+      border: var(--remove-button-border);
       font-size: var(--app-font-size-14);
 
       ::ng-deep {
@@ -56,6 +81,11 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
       &:hover {
         background-color: var(--app-button-bg-hover);
       }
+
+      &:focus-within {
+        outline: var(--remove-button-outline);
+        outline-offset: var(--outline-offset-2);
+      }
     }
   `,
 })
@@ -66,6 +96,9 @@ export class ExtensionCard {
     description: '',
     isActive: false,
   };
+
+  logoWidth: number = 54;
+  logoHeight: number = 54;
 
   removeExtension(extensionName: string): void {
     console.warn('remove!', extensionName);

@@ -8,29 +8,35 @@ import { Extension, ExtensionService } from '@/app/services/extension.service';
   selector: 'app-home-page',
   imports: [ExtensionCard, SlotButton],
   template: `
-    <div class="heading">
-      <h1 class="heading__title">Extensions List</h1>
-      <div class="heading__filters">
-        @for (filter of filterList; track filter.type) {
-          <app-slot-button
-            [class]="[
-              'filter-button',
-              isFilterSelected(filter.type) ? 'filter-button--active' : '',
-            ]"
-            (click)="applyFilter(filter.type)"
-          >
-            {{ filter.title }}
-          </app-slot-button>
+    <section class="home-page">
+      <div class="heading">
+        <h1 class="heading__title">Extensions List</h1>
+        <div class="heading__filters">
+          @for (filter of filterList; track filter.type) {
+            <app-slot-button
+              [class]="[
+                'filter-button',
+                isFilterSelected(filter.type) ? 'filter-button--active' : '',
+              ]"
+              (click)="applyFilter(filter.type)"
+            >
+              {{ filter.title }}
+            </app-slot-button>
+          }
+        </div>
+      </div>
+      <div class="extension-list">
+        @for (extension of extensions; track extension.name) {
+          <app-extension-card [extension]="extension" />
         }
       </div>
-    </div>
-    <div class="extension-list">
-      @for (extension of extensions; track extension.name) {
-        <app-extension-card [extension]="extension" />
-      }
-    </div>
+    </section>
   `,
   styles: `
+    .home-page {
+      padding-bottom: var(--spacing-72);
+    }
+
     .heading {
       display: flex;
       justify-content: space-between;
@@ -52,17 +58,24 @@ import { Extension, ExtensionService } from '@/app/services/extension.service';
       background-color: var(--filter-button-bg-color);
       border-radius: var(--border-radius-24);
       cursor: pointer;
-      transition: background-color 250ms;
+      transition:
+        background-color 250ms,
+        border 250ms;
       box-shadow: var(--filter-button-box-shadow);
-      outline: var(--filter-button-outline);
+      border: var(--filter-button-border);
 
       &:hover {
         background-color: var(--app-button-bg-hover);
       }
 
+      &:focus-within {
+        outline: var(--filter-button-outline);
+        outline-offset: var(--outline-offset-2);
+      }
+
       &--active {
         background-color: var(--filter-button-bg-active);
-        outline: none;
+        border: var(--filter-button-border-active);
 
         ::ng-deep {
           button {
@@ -72,6 +85,7 @@ import { Extension, ExtensionService } from '@/app/services/extension.service';
 
         &:hover {
           background-color: var(--filter-button-bg-hover-active);
+          border: var(--filter-button-border-hover-active);
         }
       }
     }

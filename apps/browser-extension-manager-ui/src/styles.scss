@@ -26,6 +26,7 @@
   --app-font-weight-500: 500;
   --app-font-weight-700: 700;
   /* Spacing */
+  --spacing-2: 2px;
   --spacing-4: 4px;
   --spacing-8: 8px;
   --spacing-10: 10px;
@@ -43,6 +44,7 @@
   /* Outline */
   --app-outline-light: 2px solid var(--app-color-neutral-200);
   --app-outline-dark: 2px solid var(--app-color-neutral-700);
+  --outline-offset-2: 2px;
   /* Shadow */
   --app-shadow-light: 0px 2px 3px var(--app-color-neutral-300);
 }
@@ -65,15 +67,25 @@ html.theme-light {
   --theme-button-bg-color: var(--app-color-neutral-100);
   --theme-button-bg-hover: var(--app-color-neutral-300);
 
-  --filter-button-bg-color: var(--app-color-neutral-0);
   --filter-button-bg-active: var(--app-color-red-700);
+  --filter-button-border-active: 1px solid var(--app-color-red-700);
+  
   --filter-button-bg-hover-active: var(--app-color-red-500);
+  --filter-button-border-hover-active: 1px solid var(--app-color-red-500);
+  --filter-button-outline: 2px solid var(--app-color-red-500);
 
-  --filter-button-outline: 1px solid var(--app-color-neutral-200);
+  --filter-button-bg-color: var(--app-color-neutral-0);
+  --filter-button-border: 1px solid var(--app-color-neutral-200);
   --filter-button-box-shadow: var(--app-shadow-light);
 
+  --toggle-switch-bg-color: var(--app-color-neutral-300);
+  --toggle-switch-bg-active: var(--app-color-red-700);
+  --toggle-switch-bg-handle: var(--app-color-neutral-0);
+  --toggle-switch-outline: 2px solid var(--app-color-red-500);
+
   --remove-button-bg-color: var(--card-bg-color);
-  --remove-button-outline: 1px solid var(--app-color-neutral-300);
+  --remove-button-border: 1px solid var(--app-color-neutral-300);
+  --remove-button-outline: 2px solid var(--app-color-red-700);
 }
 
 html.theme-dark {
@@ -86,6 +98,7 @@ html.theme-dark {
   --header-bg-color: var(--app-color-neutral-800);
   --header-outline: none;
   --header-box-shadow: none;
+
   --card-bg-color: var(--app-color-neutral-800);
   --card-outline: var(--app-outline-dark);
   --card-box-shadow: none;
@@ -93,15 +106,25 @@ html.theme-dark {
   --theme-button-bg-color: var(--app-color-neutral-700);
   --theme-button-bg-hover: var(--app-color-neutral-600);
 
-  --filter-button-bg-color: var(--app-color-neutral-700);
   --filter-button-bg-active: var(--app-color-red-500);
-  --filter-button-bg-hover-active: var(--app-color-red-400);
+  --filter-button-border-active: 1px solid var(--app-color-red-500);
 
-  --filter-button-outline: 1px solid var(--app-color-neutral-600);
+  --filter-button-bg-hover-active: var(--app-color-red-400);
+  --filter-button-border-hover-active: 1px solid var(--app-color-red-400);
+  --filter-button-outline: 2px solid var(--app-color-red-400);
+
+  --filter-button-bg-color: var(--app-color-neutral-700);
+  --filter-button-border: 1px solid var(--app-color-neutral-600);
   --filter-button-box-shadow: none;
 
+  --toggle-switch-bg-color: var(--app-color-neutral-600);
+  --toggle-switch-bg-active: var(--app-color-red-500);
+  --toggle-switch-bg-handle: var(--app-color-neutral-0);
+  --toggle-switch-outline: 2px solid var(--app-color-red-400);
+
   --remove-button-bg-color: var(--card-bg-color);
-  --remove-button-outline: 1px solid var(--app-color-neutral-600);
+  --remove-button-border: 1px solid var(--app-color-neutral-600);
+  --remove-button-outline: 2px solid var(--app-color-red-500);
 }
 
 html.theme-transition::view-transition-old(root) {
