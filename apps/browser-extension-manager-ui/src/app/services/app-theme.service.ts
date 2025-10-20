@@ -23,14 +23,14 @@ export class AppThemeService {
 
   localStorage = LocalStorage<LocalStorageKey, LocalStorageValueMap>();
 
-  savedTheme = signal(
+  savedTheme = signal<AppThemeMode>(
     (this.localStorage.getValue(LocalStorageKey.AppTheme, AppThemeMode.LIGHT)
       ?.value as AppThemeMode) ?? AppThemeMode.DARK,
   );
 
   isLightTheme = computed(() => this.savedTheme() === AppThemeMode.LIGHT);
 
-  applyTheme(theme: AppThemeMode): void {
+  applyTheme(theme: AppThemeMode) {
     this.htmlElement.classList.remove('theme-light', 'theme-dark');
 
     switch (theme) {
@@ -60,7 +60,7 @@ export class AppThemeService {
     });
   }
 
-  initTheme(): void {
+  initTheme() {
     this.applyTheme(this.savedTheme());
   }
 }

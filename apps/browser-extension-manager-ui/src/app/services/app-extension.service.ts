@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface Extension {
+export interface AppExtension {
   logo: string;
   name: string;
   description: string;
@@ -10,7 +10,7 @@ export interface Extension {
 @Injectable({
   providedIn: 'root',
 })
-export class ExtensionService {
+export class AppExtensionService {
   async fetchExtensions(): Promise<any> {
     try {
       const data = await fetch('/extensions.json');

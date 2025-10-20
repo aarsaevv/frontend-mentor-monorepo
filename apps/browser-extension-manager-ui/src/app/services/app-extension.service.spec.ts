@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ExtensionService } from './extension.service';
+import { AppExtensionService } from '@/app/services/app-extension.service';
 
 describe('ExtensionsService', () => {
-  let service: ExtensionService;
+  let service: AppExtensionService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ExtensionService);
+    service = TestBed.inject(AppExtensionService);
   });
 
   it('should be created', () => {

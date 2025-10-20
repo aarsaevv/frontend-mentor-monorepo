@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Extension } from '@/app/services/extension.service';
+import { AppExtension } from '@/app/services/app-extension.service';
 import { SlotButton } from '@/app/components/ui/button/slot-button.component';
-import { ToggleSwitch } from '../ui/checkbox/toggle-switch.component';
+import { ToggleSwitch } from '@/app/components/ui/checkbox/toggle-switch.component';
 
 @Component({
   selector: 'app-extension-card',
@@ -90,7 +90,7 @@ import { ToggleSwitch } from '../ui/checkbox/toggle-switch.component';
   `,
 })
 export class ExtensionCard {
-  @Input() extension: Extension = {
+  @Input() extension: AppExtension = {
     logo: '',
     name: '',
     description: '',
@@ -100,7 +100,7 @@ export class ExtensionCard {
   logoWidth: number = 54;
   logoHeight: number = 54;
 
-  removeExtension(extensionName: string): void {
+  removeExtension(extensionName: string) {
     console.warn('remove!', extensionName);
   }
 }

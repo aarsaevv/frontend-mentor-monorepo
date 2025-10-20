@@ -1,6 +1,10 @@
 import { Injectable, signal } from '@angular/core';
 
-export type AppFilterType = 'all' | 'active' | 'inactive';
+export enum AppFilterType {
+  ALL = 'all',
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+}
 
 export interface AppFilter {
   title: string;
@@ -14,17 +18,17 @@ export class AppFilterService {
   filterList: AppFilter[] = [
     {
       title: 'All',
-      type: 'all',
+      type: AppFilterType.ALL,
     },
     {
       title: 'Active',
-      type: 'active',
+      type: AppFilterType.ACTIVE,
     },
     {
       title: 'Inactive',
-      type: 'inactive',
+      type: AppFilterType.INACTIVE,
     },
   ];
 
-  selectedFilter = signal('all');
+  selectedFilter = signal<AppFilterType>(AppFilterType.ALL);
 }
