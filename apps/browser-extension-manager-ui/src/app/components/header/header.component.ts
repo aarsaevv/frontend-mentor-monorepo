@@ -12,7 +12,7 @@ import { IconSun } from '@/app/components/ui/icon/icon-sun.component';
     <div class="app-header">
       <app-icon-logo />
 
-      @if (this.isLightTheme()) {
+      @if (this.appThemeService.isLightTheme()) {
         <app-slot-button class="app-header__button" (click)="changeTheme(AppThemeMode.DARK)">
           <app-icon-moon />
         </app-slot-button>
@@ -54,8 +54,6 @@ export class Header {
   appThemeService = inject(AppThemeService);
 
   AppThemeMode = AppThemeMode;
-
-  isLightTheme = computed(() => this.appThemeService.savedTheme() === AppThemeMode.LIGHT);
 
   changeTheme(theme: AppThemeMode) {
     this.appThemeService.changeTheme(theme);

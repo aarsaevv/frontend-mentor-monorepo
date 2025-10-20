@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import LocalStorage from '@libs/sdk/src/local-storage';
 
 enum LocalStorageKey {
@@ -27,6 +27,8 @@ export class AppThemeService {
     (this.localStorage.getValue(LocalStorageKey.AppTheme, AppThemeMode.LIGHT)
       ?.value as AppThemeMode) ?? AppThemeMode.DARK,
   );
+
+  isLightTheme = computed(() => this.savedTheme() === AppThemeMode.LIGHT);
 
   applyTheme(theme: AppThemeMode): void {
     this.htmlElement.classList.remove('theme-light', 'theme-dark');

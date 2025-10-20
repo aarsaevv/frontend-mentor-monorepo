@@ -78,8 +78,8 @@ import { Extension, ExtensionService } from '@/app/services/extension.service';
 
     .extension-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-8);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-14);
       margin-top: var(--spacing-24);
     }
   `,

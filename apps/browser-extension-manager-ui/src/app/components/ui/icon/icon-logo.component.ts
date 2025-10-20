@@ -50,17 +50,15 @@ export class IconLogo {
 
   @Input() size: AppIconSize = { width: 180, height: 40 };
 
-  isLightTheme = computed(() => this.appThemeService.savedTheme() === AppThemeMode.LIGHT);
-
   getSVGViewboxByIconSize(size: AppIconSize): string {
     return this.appIconService.getSVGViewboxByIconSize(size);
   }
 
   getIconColor(): string {
-    return this.isLightTheme() ? '#c7221a' : '#de473f';
+    return this.appThemeService.isLightTheme() ? '#c7221a' : '#de473f';
   }
 
   getTextColor(): string {
-    return this.isLightTheme() ? '#09153e' : '#fbfdfe';
+    return this.appThemeService.isLightTheme() ? '#09153e' : '#fbfdfe';
   }
 }
