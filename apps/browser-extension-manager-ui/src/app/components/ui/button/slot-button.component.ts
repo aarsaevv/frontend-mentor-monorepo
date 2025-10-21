@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 
 @Component({
   selector: 'app-slot-button',
@@ -8,9 +8,9 @@ import { Component, Input } from '@angular/core';
       tabindex="0"
       type="button"
       class="button"
-      [disabled]="isDisabled"
-      [title]="title"
-      [attr.aria-label]="ariaLabel"
+      [disabled]="isDisabled()"
+      [title]="title()"
+      [attr.aria-label]="ariaLabel()"
     >
       <ng-content />
     </button>
@@ -35,7 +35,7 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class SlotButton {
-  @Input() isDisabled: boolean = false;
-  @Input() ariaLabel: string = '';
-  @Input() title: string = '';
+  isDisabled = input<boolean>(false);
+  ariaLabel = input<string>('');
+  title = input.required<string>();
 }

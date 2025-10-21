@@ -13,11 +13,19 @@ import { IconSun } from '@/app/components/ui/icon/icon-sun.component';
       <app-icon-logo />
 
       @if (this.appThemeService.isLightTheme()) {
-        <app-slot-button class="app-header__button" (click)="changeTheme(AppThemeMode.DARK)">
+        <app-slot-button
+          class="app-header__button"
+          title="Change theme"
+          (click)="changeTheme(AppThemeMode.DARK)"
+        >
           <app-icon-moon />
         </app-slot-button>
       } @else {
-        <app-slot-button class="app-header__button" (click)="changeTheme(AppThemeMode.LIGHT)">
+        <app-slot-button
+          class="app-header__button"
+          title="Change theme"
+          (click)="changeTheme(AppThemeMode.LIGHT)"
+        >
           <app-icon-sun />
         </app-slot-button>
       }

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, input, Input } from '@angular/core';
 import { Icon } from '@/app/components/ui/icon/icon.component';
 import { AppIconService, AppIconSize } from '@/app/services/app-icon.service';
 
@@ -6,11 +6,11 @@ import { AppIconService, AppIconSize } from '@/app/services/app-icon.service';
   selector: 'app-icon-moon',
   imports: [Icon],
   template: `
-    <app-icon [size]="size">
+    <app-icon [size]="size()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
-        [attr.viewBox]="getSVGViewboxByIconSize(size)"
+        [attr.viewBox]="getSVGViewboxByIconSize(size())"
       >
         <g clip-path="url(#a)">
           <path
@@ -45,7 +45,7 @@ import { AppIconService, AppIconSize } from '@/app/services/app-icon.service';
 export class IconMoon {
   appIconService: AppIconService = inject(AppIconService);
 
-  @Input() size: AppIconSize = { width: 22, height: 22 };
+  size = input<AppIconSize>({ width: 22, height: 22 });
 
   getSVGViewboxByIconSize(size: AppIconSize): string {
     return this.appIconService.getSVGViewboxByIconSize(size);

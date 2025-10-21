@@ -10,6 +10,7 @@ import { SlotButton } from '@/app/components/ui/button/slot-button.component';
       @for (filter of filterList; track filter.type) {
         <app-slot-button
           [class]="['filter-button', isFilterSelected(filter.type) ? 'filter-button--active' : '']"
+          title="Apply filter"
           (click)="applyFilter(filter.type)"
         >
           {{ filter.title }}

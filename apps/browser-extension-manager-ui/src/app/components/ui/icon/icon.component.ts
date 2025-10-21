@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, input } from '@angular/core';
 import { AppIconSize, AppIconService } from '@/app/services/app-icon.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { AppIconSize, AppIconService } from '@/app/services/app-icon.service';
     <div
       class="icon"
       [style]="{
-        width: this.toPixel(size.width),
-        height: this.toPixel(size.height),
+        width: this.toPixel(size().width),
+        height: this.toPixel(size().height),
       }"
     >
       <ng-content></ng-content>
@@ -29,7 +29,7 @@ import { AppIconSize, AppIconService } from '@/app/services/app-icon.service';
 export class Icon {
   appIconService: AppIconService = inject(AppIconService);
 
-  @Input() size: AppIconSize = { width: 24, height: 24 };
+  size = input<AppIconSize>({ width: 24, height: 24 });
 
   toPixel(value: number): string | undefined {
     if (!value) {

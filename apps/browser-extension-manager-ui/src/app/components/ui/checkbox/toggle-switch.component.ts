@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 
 @Component({
   selector: 'app-toggle-switch',
   imports: [],
   template: `
-    <label for="toggle-switch" class="toggle-switch">
-      <input id="toggle-switch" type="checkbox" [checked]="isChecked" />
-      <span class="slider"></span>
+    <label [for]="toggleSwitchId" class="toggle-switch">
+      <input [id]="toggleSwitchId" type="checkbox" [checked]="checked()" (change)="onChange()" />
+      <span class="slider" [title]="title()"></span>
     </label>
   `,
   styles: `
@@ -25,6 +25,8 @@ import { Component, Input } from '@angular/core';
 
     .slider {
       position: absolute;
+      width: 100%;
+      height: 100%;
       top: 0;
       left: 0;
       right: 0;
@@ -37,8 +39,8 @@ import { Component, Input } from '@angular/core';
       &:before {
         content: '';
         position: absolute;
-        height: 16px;
         width: 16px;
+        height: 16px;
         left: var(--spacing-2);
         top: var(--spacing-2);
         background-color: var(--toggle-switch-bg-handle);
@@ -62,5 +64,13 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class ToggleSwitch {
-  @Input() isChecked: boolean = false;
+  checked = model<boolean>(false);
+
+  title = input.required<string>();
+
+  toggleSwitchId: string = crypto.randomUUID();
+
+  onChange() {
+    this.checked.update((val) => !val);
+  }
 }

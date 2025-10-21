@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { AppExtension } from '@/app/services/app-extension.service';
+import { Component, computed, inject, input } from '@angular/core';
+import { AppExtension, AppExtensionService } from '@/app/services/app-extension.service';
 import { SlotButton } from '@/app/components/ui/button/slot-button.component';
 import { ToggleSwitch } from '@/app/components/ui/checkbox/toggle-switch.component';
 
@@ -10,21 +10,30 @@ import { ToggleSwitch } from '@/app/components/ui/checkbox/toggle-switch.compone
     <div class="card">
       <div class="card__info">
         <img
-          [src]="extension.logo"
-          [alt]="extension.name"
+          [title]="imgTitle()"
+          [src]="extension().logo"
+          [alt]="extension().name"
           [width]="logoWidth"
           [height]="logoHeight"
         />
         <div>
-          <p class="text-primary">{{ extension.name }}</p>
-          <p class="text-secondary">{{ extension.description }}</p>
+          <p class="text-primary">{{ extension().name }}</p>
+          <p class="text-secondary">{{ extension().description }}</p>
         </div>
       </div>
       <div class="card__controls">
-        <app-slot-button class="remove-button" (click)="removeExtension(extension.name)">
+        <app-slot-button
+          class="remove-button"
+          title="Remove extension"
+          (click)="removeExtension(extension().name)"
+        >
           Remove
         </app-slot-button>
-        <app-toggle-switch [isChecked]="extension.isActive" />
+        <app-toggle-switch
+          title="Toggle extension"
+          [checked]="extension().isActive"
+          (checkedChange)="toggleExtension(extension().name)"
+        />
       </div>
     </div>
   `,
@@ -90,17 +99,25 @@ import { ToggleSwitch } from '@/app/components/ui/checkbox/toggle-switch.compone
   `,
 })
 export class ExtensionCard {
-  @Input() extension: AppExtension = {
-    logo: '',
-    name: '',
-    description: '',
-    isActive: false,
-  };
+  appExtensionService: AppExtensionService = inject(AppExtensionService);
 
   logoWidth: number = 54;
   logoHeight: number = 54;
 
+  extension = input<AppExtension>({
+    logo: '',
+    name: '',
+    description: '',
+    isActive: false,
+  });
+
+  imgTitle = computed<string>(() => `${this.extension().name} logo image`);
+
   removeExtension(extensionName: string) {
-    console.warn('remove!', extensionName);
+    this.appExtensionService.removeExtension(extensionName);
+  }
+
+  toggleExtension(extensionName: string) {
+    this.appExtensionService.toggleExtension(extensionName);
   }
 }

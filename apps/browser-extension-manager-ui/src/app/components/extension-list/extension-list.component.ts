@@ -1,5 +1,5 @@
 import { AppExtension } from '@/app/services/app-extension.service';
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { ExtensionCard } from '@/app/components/extension-card/extension-card.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { ExtensionCard } from '@/app/components/extension-card/extension-card.co
   imports: [ExtensionCard],
   template: `
     <div class="extension-list">
-      @for (extension of extensions; track extension.name) {
+      @for (extension of extensions(); track extension.name) {
         <app-extension-card [extension]="extension" />
       }
     </div>
@@ -22,5 +22,5 @@ import { ExtensionCard } from '@/app/components/extension-card/extension-card.co
   `,
 })
 export class ExtensionList {
-  @Input({ required: true }) extensions: AppExtension[] = [];
+  extensions = input.required<AppExtension[]>();
 }

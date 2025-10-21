@@ -40,20 +40,8 @@ export class Home {
 
   selectedFilter = this.appFilterService.selectedFilter;
 
-  extensions = signal<AppExtension[]>([]);
-
-  filteredExtensions = computed(() => {
-    switch (this.selectedFilter()) {
-      case AppFilterType.ALL:
-        return this.extensions();
-      case AppFilterType.ACTIVE:
-        return this.extensions().filter((item) => item.isActive);
-      case AppFilterType.INACTIVE:
-        return this.extensions().filter((item) => !item.isActive);
-      default:
-        return this.extensions();
-    }
-  });
+  extensions = this.appExtensionService.extensions;
+  filteredExtensions = this.appExtensionService.filteredExtensions;
 
   async fetchExtensions() {
     const extensions = await this.appExtensionService.fetchExtensions();

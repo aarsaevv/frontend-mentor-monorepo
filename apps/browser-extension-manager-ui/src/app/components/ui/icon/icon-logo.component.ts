@@ -1,17 +1,18 @@
-import { Component, computed, inject, Input } from '@angular/core';
+import { Component, computed, inject, input, Input } from '@angular/core';
 import { Icon } from '@/app/components/ui/icon/icon.component';
 import { AppIconService, AppIconSize } from '@/app/services/app-icon.service';
 import { AppThemeMode, AppThemeService } from '@/app/services/app-theme.service';
+import { App } from '@/app/app.component';
 
 @Component({
   selector: 'app-icon-logo',
   imports: [Icon],
   template: `
-    <app-icon [size]="size">
+    <app-icon [size]="size()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
-        [attr.viewBox]="getSVGViewboxByIconSize(size)"
+        [attr.viewBox]="getSVGViewboxByIconSize(size())"
       >
         <g clip-path="url(#a)">
           <path
@@ -48,7 +49,7 @@ export class IconLogo {
   appIconService: AppIconService = inject(AppIconService);
   appThemeService: AppThemeService = inject(AppThemeService);
 
-  @Input() size: AppIconSize = { width: 180, height: 40 };
+  size = input<AppIconSize>({ width: 180, height: 40 });
 
   getSVGViewboxByIconSize(size: AppIconSize): string {
     return this.appIconService.getSVGViewboxByIconSize(size);
