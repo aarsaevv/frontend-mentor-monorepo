@@ -15,7 +15,7 @@ import { ExtensionCard } from '@/app/components/extension-card/extension-card.co
   styles: `
     .extension-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
       gap: var(--spacing-14);
       margin-top: var(--spacing-24);
     }

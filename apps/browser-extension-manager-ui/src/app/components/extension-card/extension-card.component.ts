@@ -39,6 +39,8 @@ import { ToggleSwitch } from '@/app/components/ui/checkbox/toggle-switch.compone
   `,
   styles: `
     .card {
+      max-width: 300px;
+      min-height: 150px;
       display: flex;
       flex-direction: column;
       padding: var(--spacing-16);
@@ -46,7 +48,6 @@ import { ToggleSwitch } from '@/app/components/ui/checkbox/toggle-switch.compone
       border-radius: var(--border-radius-12);
       box-shadow: var(--card-box-shadow);
       outline: var(--card-outline);
-      min-height: 150px;
       justify-content: space-between;
 
       &__info {
