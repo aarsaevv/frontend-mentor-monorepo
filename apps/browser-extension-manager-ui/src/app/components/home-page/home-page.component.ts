@@ -32,6 +32,17 @@ import { ExtensionList } from '@/app/components/extension-list/extension-list.co
         font-size: var(--app-font-size-24);
       }
     }
+
+    @media (max-width: 600px) {
+      .heading {
+        flex-direction: column;
+        gap: var(--spacing-16);
+
+        &__title {
+          font-size: var(--app-font-size-30);
+        }
+      }
+    }
   `,
 })
 export class Home {

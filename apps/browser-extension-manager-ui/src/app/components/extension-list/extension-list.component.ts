@@ -8,7 +8,11 @@ import { ExtensionCard } from '@/app/components/extension-card/extension-card.co
   template: `
     <div class="extension-list">
       @for (extension of extensions(); track extension.name) {
-        <app-extension-card [extension]="extension" />
+        <app-extension-card
+          animate.enter="enter"
+          animate.leave="leave"
+          [extension]="extension"
+        />
       }
     </div>
   `,
@@ -18,6 +22,14 @@ import { ExtensionCard } from '@/app/components/extension-card/extension-card.co
       grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
       gap: var(--spacing-14);
       margin-top: var(--spacing-24);
+    }
+
+    .enter {
+      animation: fade-in 500ms;
+    }
+
+    .leave {
+      animation: fade-out 250ms;
     }
   `,
 })

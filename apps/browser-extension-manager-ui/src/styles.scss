@@ -22,6 +22,7 @@
   --app-font-size-16: 16px;
   --app-font-size-18: 18px;
   --app-font-size-24: 24px;
+  --app-font-size-30: 30px;
   --app-font-weight-400: 400;
   --app-font-weight-500: 500;
   --app-font-weight-700: 700;
@@ -163,5 +164,27 @@ p {
   to {
     clip-path: circle(100% at 50% 0%);
     opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-5%);
   }
 }
