@@ -23,7 +23,10 @@ import { AppIconService, AppIconSize } from '@/app/services/app-icon.service';
         </g>
         <defs>
           <clipPath id="a">
-            <path fill="#fff" d="M0 0h22v22H0z" />
+            <path
+              fill="#fff"
+              d="M0 0h22v22H0z"
+            />
           </clipPath>
         </defs>
       </svg>

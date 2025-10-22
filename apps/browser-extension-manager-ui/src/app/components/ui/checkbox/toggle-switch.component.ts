@@ -4,9 +4,20 @@ import { Component, input, model } from '@angular/core';
   selector: 'app-toggle-switch',
   imports: [],
   template: `
-    <label [for]="toggleSwitchId" class="toggle-switch">
-      <input [id]="toggleSwitchId" type="checkbox" [checked]="checked()" (change)="onChange()" />
-      <span class="slider" [title]="title()"></span>
+    <label
+      [for]="toggleSwitchId"
+      class="toggle-switch"
+    >
+      <input
+        [id]="toggleSwitchId"
+        type="checkbox"
+        [checked]="checked()"
+        (change)="onChange()"
+      />
+      <span
+        class="slider"
+        [title]="title()"
+      ></span>
     </label>
   `,
   styles: `

@@ -69,7 +69,7 @@ html.theme-light {
 
   --filter-button-bg-active: var(--app-color-red-700);
   --filter-button-border-active: 1px solid var(--app-color-red-700);
-  
+
   --filter-button-bg-hover-active: var(--app-color-red-500);
   --filter-button-border-hover-active: 1px solid var(--app-color-red-500);
   --filter-button-outline: 2px solid var(--app-color-red-500);
@@ -149,7 +149,8 @@ body {
   font-weight: var(--app-font-weight-400);
 }
 
-h1, p {
+h1,
+p {
   margin: 0;
 }
 
