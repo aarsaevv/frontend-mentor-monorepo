@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
   styles: ``,
 })
 export class App {
-  protected readonly title = signal('multi-step-form-ui');
+  protected readonly title = signal('multistep-form');
 }
